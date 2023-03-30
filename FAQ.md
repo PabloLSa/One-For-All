@@ -117,7 +117,7 @@ Se ainda houver alguma dúvida sobre como entregar seu projeto [aqui tem um vide
 <details>
 <summary>⚠️  Rode comandos do NPM de <strong>dentro</strong> do container Node</summary><br>
 
-- Caso opte por utilizar o Docker, **TODOS** os comandos disponíveis no `package.json` (npm start, npm test, npm run dev, ...) devem ser executados **DENTRO** do container, ou seja, no terminal que aparece após a execução do comando `docker exec` citado acima.
+- Caso opte por utilizar o Docker, **TODOS** os comandos disponíveis no `package.json` (npm start, npm test, npm run dev, ...) devem ser executados **DENTRO** do container, ou seja, no terminal que aparece após a execução do comando `docker exec`.
 
 </details>
 
