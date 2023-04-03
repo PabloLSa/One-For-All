@@ -4,7 +4,7 @@ services:
   # Serviço que irá rodar o node
   node:
     # Imagem base do container
-    build: .
+    image: node:16
     # Nome do container para facilitar execução
     container_name: one_for_all
     # Mesmo que `docker run -t`
