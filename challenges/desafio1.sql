@@ -7,34 +7,36 @@ USE SpotifyClone;
 CREATE TABLE plano (
   plano_id INT AUTO_INCREMENT PRIMARY KEY,
   nome_plano VARCHAR(50) NOT NULL,
-  valor_plano DECIMAL(5,2) NOT NULL
-)engine = InnoDB;
+  valor_plano DECIMAL(5, 2) NOT NULL
+) engine = InnoDB;
+
 -- tabela pessoa_usuaria
 CREATE TABLE pessoa_usuaria (
   pessoa_usuaria_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   nome_pessoa_usuaria VARCHAR(50) NOT NULL,
   idade INT,
   plano_id INT,
-  data_assinatura DATE,	
-  valor_plano DECIMAL(10,2) NOT NULL, 
+  data_assinatura DATE,
+  valor_plano DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (plano_id) REFERENCES plano(plano_id)
-)engine = InnoDB;
+) engine = InnoDB;
 
 -- tabela artista
 CREATE TABLE artista (
   artista_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   nome_artista VARCHAR(50) NOT NULL
-)engine = InnoDB;
+) engine = InnoDB;
 
 -- tabela album
 CREATE TABLE album (
-  album_id INT NOT NULL AUTO_INCREMENT, 
+  album_id INT NOT NULL AUTO_INCREMENT,
   nome_album VARCHAR(50) NOT NULL,
   artista_id INT NOT NULL,
   ano_lancamento INT,
   PRIMARY KEY (album_id),
   FOREIGN KEY (artista_id) REFERENCES artista(artista_id)
-)engine = InnoDB;
+) engine = InnoDB;
+
 -- tabela cancao
 CREATE TABLE cancao (
   cancao_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -42,11 +44,11 @@ CREATE TABLE cancao (
   duracao_segundos INT NOT NULL,
   album_id INT NOT NULL,
   FOREIGN KEY (album_id) REFERENCES album(album_id)
-)engine = InnoDB;
+) engine = InnoDB;
 
 -- tabela historico_de_reproducoes
 CREATE TABLE historico_de_reproducoes (
-reproducao_id INT NOT NULL AUTO_INCREMENT,
+  reproducao_id INT NOT NULL AUTO_INCREMENT,
   pessoa_usuaria_id INT NOT NULL,
   cancao_id INT NOT NULL,
   data_reproducao DATETIME NOT NULL,
@@ -54,7 +56,8 @@ reproducao_id INT NOT NULL AUTO_INCREMENT,
   UNIQUE KEY (pessoa_usuaria_id, cancao_id),
   FOREIGN KEY (pessoa_usuaria_id) REFERENCES pessoa_usuaria(pessoa_usuaria_id),
   FOREIGN KEY (cancao_id) REFERENCES cancao(cancao_id)
-)engine = InnoDB;
+) engine = InnoDB;
+
 -- tabela seguindo_artistas
 CREATE TABLE seguindo_artistas (
   pessoa_usuaria_id INT NOT NULL,
@@ -62,8 +65,7 @@ CREATE TABLE seguindo_artistas (
   PRIMARY KEY (pessoa_usuaria_id, artista_id),
   FOREIGN KEY (pessoa_usuaria_id) REFERENCES pessoa_usuaria(pessoa_usuaria_id),
   FOREIGN KEY (artista_id) REFERENCES artista(artista_id)
-)engine = InnoDB;
-
+) engine = InnoDB;
 INSERT INTO plano (nome_plano, valor_plano)
 VALUES 
   ('gratuito', 0),
